@@ -1,0 +1,12 @@
+.hero .intro  {
+    background: #00c385;
+    max-width: #fff;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+}
+
