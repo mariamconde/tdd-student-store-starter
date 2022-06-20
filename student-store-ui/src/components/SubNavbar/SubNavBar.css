@@ -1,0 +1,22 @@
+.sub-navbar .category-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+    list-style-type: none;
+    height: 40px;
+    font-weight: 500;
+    transition: all .2s ease;
+}
+
+.hero .intro {
+    background: #fff;
+    flex: 1;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 350px;
+}

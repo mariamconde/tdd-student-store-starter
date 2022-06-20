@@ -1,18 +1,77 @@
 import * as React from "react"
+import "./App.css"
+import { useState } from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import "./App.css"
+import NotFound from "../NotFound/NotFound"
+import ProductDetail from "../ProductDetail/ProductDetail"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import axios from 'axios'
+import { useEffect } from "react"
+
+
 
 export default function App() {
+  const [products, setProducts] = useState('')
+  const [isFetching, setIsFetching] = useState(false) //currently fetching a product from API
+  const [error, setError] = useState(null)
+  const [isOpen, setIsOpen] = useState(false) //for sidebar
+  const [shoppingCart, setShoppingCart] = useState([{}])
+  const [checkoutForm, setCheckoutForm] = useState(null)
+
+ 
+// axios to display products
+  try{
+    const getData = async () => {
+      const response  = await axios.get('https://codepath-store-api.herokuapp.com/store');
+      setProducts(response.data.products);
+    };
+    useEffect(() => {
+      getData();
+    }, []);
+  } catch (error) {
+    setError(error)
+  }
+  
+  
+// event handlers
+
+  function handleAddItemToCart(id) {
+    console.log('nothing to see here ' + id)
+      
+  }
+
+  function handleRemoveItemToCart(id) {
+    console.log('i have been clicked also ' + id)
+  }
+
+
   return (
     <div className="app">
+
       <BrowserRouter>
         <main>
-          {/* YOUR CODE HERE! */}
-          <Navbar />
-          <Sidebar />
-          <Home />
+
+            <Navbar />
+            <Sidebar />
+       
+          <Routes>
+            <Route path="/" element={
+
+
+              <Home 
+                products={products} 
+                handleAddItemToCart={handleAddItemToCart} 
+                handleRemoveItemToCart ={handleRemoveItemToCart}
+              />
+
+            }/>
+            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route path="*" element={<NotFound />}/>
+          </Routes>
+
+
         </main>
       </BrowserRouter>
     </div>
