@@ -18,7 +18,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [x] User can search for products.
 - [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
-- [x] User can click to expand the shopping cart in the left navigation.
+- [] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
 - [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
@@ -214,8 +214,8 @@ The following specifications were met on the Express backend and the React front
 
 **CheckoutForm.jsx**
 
-  - [ ] Should render JSX that is wrapped by a `div` element with the `className` of `checkout-form`
-  - [ ] Should accept **at least** the following props:
+  - [x] Should render JSX that is wrapped by a `div` element with the `className` of `checkout-form`
+  - [x] Should accept **at least** the following props:
     - `isOpen` - boolean
     - `shoppingCart` - the active user's cart formatted as an array of objects with `itemId` and `quantity` keys
     - `checkoutForm` - the form state for the `CheckoutForm` component
@@ -235,7 +235,7 @@ The following specifications were met on the Express backend and the React front
         - [ ] the `placeholder` prop set to `Student Name`
         - [ ] the `value` prop set by `checkoutForm.name`.
         - [ ] a valid `onChange` prop that uses the `handleOnCheckoutFormChange` function to update the `checkoutForm` state
-  - [ ] Should render a `button` element with the `className` of `checkout-button`.
+  - [x] Should render a `button` element with the `className` of `checkout-button`.
     - [ ] It should contain the text `Checkout`.
     - [ ] When clicked, it should call the `handleOnSubmit` function.
       - [ ] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
