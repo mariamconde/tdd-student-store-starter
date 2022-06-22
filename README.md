@@ -18,11 +18,11 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [x] User can search for products.
 - [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
-- [xx] User can click to expand the shopping cart in the left navigation.
+- [] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
-- [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [x] User can check out, and can view receipt upon completion.
+- [] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
+- [] User can check out, and can view receipt upon completion.
 
 #### Stretch Features
 
