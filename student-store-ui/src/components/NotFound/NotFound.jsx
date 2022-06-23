@@ -1,14 +1,10 @@
-import React from 'react'
+import * as React from "react";
+import "./NotFound.css";
 
-function NotFound() {
+export default function NotFound() {
   return (
-    <div>
-        <h1>
-            NOT FOUND
-        </h1>
-
+    <div className="not-found">
+      <p className="nf-p">Page Not Found</p>
     </div>
-  )
+  );
 }
-
-export default NotFound

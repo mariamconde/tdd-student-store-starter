@@ -1,65 +1,229 @@
-import * as React from "react"
-import ProductCard from "../ProductCard/ProductCard"
-import { useState } from "react"
+import * as React from "react";
+import "./ProductGrid.css";
+import ProductCard from "../ProductCard/ProductCard";
 
+export default function ProductGrid({
+  products,
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+  isFetching,
+  setIsFetching,
+  getQuantity,
+}) {
+  const [currentTab, setCurrentTab] = React.useState("all");
+  const [searchValue, setSearchValue] = React.useState("");
 
-export default function ProductGrid(props) {
-  const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('')
+  const clothingProducts = products.filter((product) => {
+    return product.category == "clothing";
+  });
+  const foodProducts = products.filter((product) => {
+    return product.category == "food";
+  });
+  const accessoriesProducts = products.filter((product) => {
+    return product.category == "accessories";
+  });
+  const techProducts = products.filter((product) => {
+    return product.category == "tech";
+  });
+  const searchProducts = products.filter((product) => {
+    return product.name.toLowerCase().includes(searchValue);
+  });
 
-  function handleSetCategory(newCat) {
-    setCategory(newCat)
-  }
-
-  let ourProducts = (props.products !== '' ? Object.values(props.products) : null)
-  console.log(ourProducts)
-
-  return ( 
+  React.useEffect(() => {
+    setSearchValue("");
+  }, [currentTab]);
+  return (
     <div className="product-grid">
-      <div className="content">
-        <h3>Best selling products</h3>
-      </div>
-
-      <input type="text" name="search" placeholder="Search" onChange={e => setQuery(e.target.value)}></input>  
-            
-            <div className='category-menu open'>
-                <li>
-                    <button onClick={() => setCategory('')}>All categories</button>
-                </li>
-                <li>
-                    <button onClick={() => setCategory('clothing')}>Clothing</button>
-                </li>
-                <li>
-                <button onClick={() => setCategory('food')}>Food</button>
-                </li>
-                <li>
-                <button onClick={() =>setCategory('accessories')}>Accessories</button>
-                </li>
-                <li>
-                <button onClick={() =>setCategory('tech')}>Tech</button>
-                </li>
+      <div className="sub-navbar">
+        <div className="sn-content">
+          <div className="sn-row">
+            <div className="search-bar">
+              <input
+                className="sn-input"
+                type="text"
+                name="search"
+                placeholder="Search"
+                value={searchValue}
+                onChange={(event) => {
+                  setSearchValue(event.target.value);
+                  setCurrentTab("");
+                }}
+              ></input>
+              <i class="material-icons">search</i>
             </div>
-      
-      
-      {ourProducts !== null ? 
-        ourProducts.
-        filter(product=>product.name.toLowerCase().includes(query)).
-        filter(product=>product.category.includes(category)).
-        map(
-          (product, index) =>
-
-          <ProductCard 
-          key={product + '-' + index}
-          
-          product={product} 
-          showDescription={false}
-          productId={props.productId}
-          quantity = {props.quantity}
-          handleAddItemToCart = {props.handleAddItemToCart} 
-          handleRemoveItemToCart = {props.handleRemoveItemToCart}
-          />
-        ) : null}
-
+            <div className="row-links">
+              <span className="help">
+                <i class="material-icons">help</i>
+                Help
+              </span>
+              <div class="cart">
+                <a className="cart-a" href="/">
+                  My Cart<i class="material-icons">shopping_cart</i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="sn-row">
+            <i class="material-icons">menu</i>
+            <div className="sn-headings">
+              <button
+                className="sn-h"
+                style={
+                  currentTab == "all"
+                    ? { borderBottom: "solid 2px #00c385" }
+                    : null
+                }
+                id="all"
+                onClick={() => setCurrentTab("all")}
+              >
+                All Categories
+              </button>
+              <button
+                className="sn-h"
+                id="clothing"
+                style={
+                  currentTab == "clothing"
+                    ? { borderBottom: "solid 2px #00c385" }
+                    : null
+                }
+                onClick={() => setCurrentTab("clothing")}
+              >
+                Clothing
+              </button>
+              <button
+                className="sn-h"
+                id="food"
+                style={
+                  currentTab == "food"
+                    ? { borderBottom: "solid 2px #00c385" }
+                    : null
+                }
+                onClick={() => {
+                  setCurrentTab("food");
+                }}
+              >
+                Food
+              </button>
+              <button
+                className="sn-h"
+                id="accessories"
+                style={
+                  currentTab == "accessories"
+                    ? { borderBottom: "solid 2px #00c385" }
+                    : null
+                }
+                onClick={() => setCurrentTab("accessories")}
+              >
+                Accessories
+              </button>
+              <button
+                className="sn-h"
+                id="tech"
+                style={
+                  currentTab == "tech"
+                    ? { borderBottom: "solid 2px #00c385" }
+                    : null
+                }
+                onClick={() => setCurrentTab("tech")}
+              >
+                Tech
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="product-grid-content">
+        <h3 className="bsp">Best Selling Products</h3>
+        <div className="grid">
+          {currentTab == "all" &&
+            products.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {currentTab == "clothing" &&
+            clothingProducts.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {currentTab == "food" &&
+            foodProducts.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {currentTab == "accessories" &&
+            accessoriesProducts.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {currentTab == "tech" &&
+            techProducts.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {currentTab == "" &&
+            searchProducts.map((product, i) => (
+              <ProductCard
+                key={i}
+                product={product}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+                showDescription={false}
+                isFetching={isFetching}
+                setIsFetching={setIsFetching}
+              />
+            ))}
+          {searchProducts.length == 0 && (
+            <p className="no-products">No Products Available</p>
+          )}
+        </div>
+      </div>
     </div>
-  )
+  );
 }

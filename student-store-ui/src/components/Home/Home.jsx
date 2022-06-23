@@ -1,28 +1,34 @@
-import * as React from "react"
-import "./Home.css"
+import * as React from "react";
+import "./Home.css";
+import Hero from "../Hero/Hero";
+import ProductGrid from "../ProductGrid/ProductGrid";
+import About from "../About/About";
+import Footer from "../Footer/Footer";
+import Contact from "../Contact/Contact";
 
-import Hero from "../Hero/Hero"
-import ProductGrid from "../ProductGrid/ProductGrid"
-import ProductCard from "../ProductCard/ProductCard"
-import SubNavbar from "../SubNavbar/SubNavbar"
-import Footer from "../Footer/Footer"
-
-export default function Home(props) {
+export default function Home({
+  products,
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+  isFetching,
+  setIsFetching,
+  getQuantity,
+}) {
   return (
     <div className="home">
       <Hero />
 
-
-      <SubNavbar />
-
-      <ProductGrid 
-        products={props.products}
-        handleAddItemToCart={props.handleAddItemToCart}
-        handleRemoveItemToCart={props.handleRemoveItemToCart}
+      <ProductGrid
+        products={products}
+        handleAddItemToCart={handleAddItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
+        isFetching={isFetching}
+        setIsFetching={setIsFetching}
+        getQuantity={getQuantity}
       />
-
-      <Footer/>
-
+      <About />
+      <Contact />
+      <Footer />
     </div>
-  )
+  );
 }

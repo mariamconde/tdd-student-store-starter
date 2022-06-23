@@ -1,26 +1,31 @@
-import React from 'react'
-import ProductCard from '../ProductCard/ProductCard'
+import * as React from "react";
+import "./ProductView.css";
+import ProductCard from "../ProductCard/ProductCard";
 
-function ProductView(props) {
-    let {product} = props.product
-    let {productId} = props.productId
-    let {quantity} = props.quantity
-    let {handleAddItemToCart} = props.handleAddItemToCart 
-    let {handleRemoveItemToCart} = props.handleRemoveItemToCart 
-
-    return (
-        <div className="product-view">
-            <h1 className="product-id">Product # {productId}</h1> 
-            <ProductCard 
-            product ={props.product}
-            productId = {props.productId}
-            quantity ={props.quantity}
-            handleAddItemToCart = {props.handleAddItemToCart}
-            handleRemoveItemToCart = {props.handleRemoveItemToCart}
-            showDescription={true}
-            />
-        </div>
-    )
+export default function ProductView({
+  product,
+  productId,
+  quantity,
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+  isFetching,
+  setIsFetching,
+}) {
+  return (
+    <div className="product-view">
+      <div className="pv-content">
+        <h1 className="product-id">Product # {productId}</h1>
+        <ProductCard
+          product={product}
+          productId={productId}
+          quantity={quantity}
+          handleAddItemToCart={handleAddItemToCart}
+          handleRemoveItemFromCart={handleRemoveItemFromCart}
+          showDescription={true}
+          isFetching={isFetching}
+          setIsFetching={setIsFetching}
+        />
+      </div>
+    </div>
+  );
 }
-
-export default ProductView

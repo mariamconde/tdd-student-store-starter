@@ -1,33 +1,114 @@
 .product-card {
-    padding: 20px;
-    position: relative;
+    /* height: 350px;
+    width: 250px; */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #e4e4e4;
+}
 
+.media {
+    /* height: 250px;
+    width: 248px; */
+    width: 100%;
+    height: 100%;
+}
+
+.product-description {
+    width:100%;
+    padding-left:20px;
+    padding-right: 20px;
+}
+
+.pc-image{
+    /* width: 248px;
+    height:250px; */
+    width: 100%;
+    height: 100%;
+}
+
+.product-info {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    height: 97px;
+    padding: 8px 12px;
+    /* width:100%; */
 }
 
-.image {
-    cursor: pointer;
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
-    width: 300px;
-    height: 300px;
-    border-radius: 25px;
+.stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+}
+
+.product-name {
+    margin:0;
+    font-weight: 500;
+    display: inline;
+    white-space:nowrap;
+    overflow:hidden;
+
+}
+
+.product-price {
+    margin:0;
+}
+
+.remove, .add {
     
-    z-index: 1;
-    width: 100%;
-    /* padding-bottom: 150%; */
-    perspective: 1000px;   
+    display: flex;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    max-height: fit-content;
+    max-width: fit-content;
+    margin: 10px 5px;
+    
 }
 
-.add, .remove {
-    width: 30px;
+.pc-buttons {
+    /* width:80px; */
+    /* width:100%; */
+    flex-direction: row;
+    display: flex;
+    justify-content: right;
+    
+}
+.product-quantity {
+    margin:0px 5px;
+    background: #ff9017;
+    color: #fff;
+    width: 20px;
     height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right:2px;
 }
 
+.pc-right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
 
-.product-price, .product-name {
-    padding-left: 50px;
-
+.material-icons {
+    width: 20px;
+    height: 20px;
+    border: solid 1px #00c385;
+    color: #00c385;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.pc-data {
+    /* width:168px; */
+    margin-right: auto;
+    /* width: 100%; */
 }
