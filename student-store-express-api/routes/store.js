@@ -2,9 +2,9 @@ const Store = require("../models/store");
 const { NotFoundError, BadRequestError } = require("../utils/errors");
 const express = require("express");
 const router = express.Router();
-// const products = require("../data/db.json");
 
-// list all products
+
+// list all of the products
 router.get("/", async (req, res, next) => {
   try {
     console.log("in here");
@@ -15,7 +15,8 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// fetch single transaction
+
+// fetches a single transaction
 router.get("/:productId", async (req, res, next) => {
   try {
     console.log("in product route");
@@ -30,7 +31,7 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-// create new purchsse order
+// creates a new purchsse order
 router.post("/checkout", async (req, res, next) => {
   try {
     const shoppingCart = req.body.shoppingCart;
