@@ -23,7 +23,7 @@ export default function CheckoutForm(props) {
                 <p>Email</p>
                 <input 
                     className="email-input" 
-                    type="email" 
+                    type="text" 
                     name="email" 
                     placeholder="student@codepath.org"
                     value={props.checkoutForm.email}
