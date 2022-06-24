@@ -1,37 +1,46 @@
+const Store = require("../models/store");
+const { NotFoundError, BadRequestError } = require("../utils/errors");
 const express = require("express");
-// const Store = require("../models/store");
-// const { NotFoundError } = require("../utils/errors");
 const router = express.Router();
+// const products = require("../data/db.json");
 
-//List all products. When /store is read, pull up list of products from Store class/module.
-//Serve array of 
-//Display products as a json object. If fails, returns error.
-
-
-
-router.get("/store", async (req, res, next) => {
-    res.status(200).json({ping: "pong"});
-    // try {
-    //     const products = await Store.listProducts();
-    //     res.status(200).json({ products });
-    // } catch (err) {
-    //     next(err);
-    // }
+// list all products
+router.get("/", async (req, res, next) => {
+  try {
+    console.log("in here");
+    const products = await Store.listProducts();
+    res.status(200).json({ products });
+  } catch (err) {
+    next(err);
+  }
 });
 
-//Get product by ID.
-// router.get("/:productId", async(req, res, next) => {
-//     try {
-//         //Get product ID from req.params.productId. Call the fetch function on the ID, and return.
-//         const productId = req.params.productId;
-//         const product = await Store.fetchProductById(productId);
-//         if(!productId) {
-//             throw new NotFoundError("Transaction not found");
-//         }
-//         res.status(200).json({ product })
-//     } catch(err) {
-//         next(err);
-//     }
-// });
+// fetch single transaction
+router.get("/:productId", async (req, res, next) => {
+  try {
+    console.log("in product route");
+    const productId = req.params.productId;
+    const product = await Store.fetchProductById(productId);
+    if (!product) {
+      throw new NotFoundError("Transaction not found");
+    }
+    res.status(200).json({ product });
+  } catch (err) {
+    next(err);
+  }
+});
 
+// create new purchsse order
+router.post("/checkout", async (req, res, next) => {
+  try {
+    const shoppingCart = req.body.shoppingCart;
+    const user = req.body.user;
+    console.log("sc and u", shoppingCart, user);
+
+    const newPurchase = await Store.createNewPurchase(shoppingCart, user);
+    res.status(201).json({ purchase: newPurchase });
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;

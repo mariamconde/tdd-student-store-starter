@@ -1,33 +1,30 @@
-// YOUR CODE HERE
-const express = require("express")
-const morgan = require("morgan")
-const cors = require("cors")
-const { NotFoundError } = require("./utils/errors")
-const storeRouter = require("./routes/store")
+const express = require("express");
+const app = express();
 
-const app = express()
+const morgan = require("morgan");
+const storeRouter = require("./routes/store");
+const { NotFoundError } = require("./utils/errors");
+var cors = require("cors");
 
-// app. use to get store router
-app.use(morgan("tiny"))
-app.use(express.json())
-app.use(cors())
-app.use("/store", storeRouter)
+app.use(cors());
+app.use(morgan("tiny"));
+app.use(express.json());
+
+app.use("/store", storeRouter);
+
+app.get("/", (req, res, next) => {
+  res.status(200).json({ ping: "pong" });
+});
 
 
-
-
-
-/* Handle all 404 errors that weren't matched by a route */
 app.use((req, res, next) => {
-    return next(new NotFoundError())
-  })
+  return next(new NotFoundError());
+});
 
-//Generic error handler, anythign that is not handeled at this point is handeled
-app.use((error, request, response, next) => {
-    return response.status(error.status || 500).json({
-        error: {message: error.message || "Something went wrong in the application", status: error.status || 500}
-    })
-})
+app.use((error, req, res, next) => {
+  let status = error.status || 500;
+  let message = error.message || "Something went wrong in the application";
+  return res.status(status).json({ error: { status, message } });
+});
 
-
-module.exports = app
+module.exports = app;
