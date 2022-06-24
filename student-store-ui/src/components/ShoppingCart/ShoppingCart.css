@@ -1,53 +1,118 @@
-.shopping-cart .title {
-    margin: 10px;
-}
-
-.shopping-cart .notification {
-    margin: 10px;
-}
-
-.shopping-cart .title .item-grid {
-    background-color: white;
-}
-
-.shopping-cart .item-table {
-    margin: 10px;
-}
-
-.shopping-cart .item-table .item-information {
+.shopping-cart {
     width: 100%;
-}
-
-.shopping-cart .price-container {
-    background-color: white;
-    color: black;
-    margin: 10px;
-    padding: 10px;
-}
-
-.shopping-cart .price-container .subtotal {
+  }
+  
+  .sc-table {
+    width: 100%;
+    color: #fff;
     display: flex;
-    justify-content: space-between;
-}
-
-.shopping-cart .price-container .taxes {
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #e4e4e4;
+    z-index: 100;
+    /* position: fixed; */
+  }
+  
+  .sc-title {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .header-row {
     display: flex;
-    justify-content: space-between;
-}
-
-.shopping-cart .price-container .total {
-    display: flex;
-    justify-content: space-between;
-}
-
-table {
-    color: black;
-    background-color: white;
-}
-
-th {
+    height: 50px;
     background-color: #2c4047;
-    border: 1px solid black;
-    color: white;
-    height: 40px;
-}
+    margin-bottom: 15px;
+  }
+  
+  .flex-2 {
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .shopping-cart .sc-table .header-row span {
+    flex: 1;
+    color: #fff;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 600;
+    margin-left: 15px;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .product-row {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    border-bottom: solid 1px #e4e4e4;
+  }
+  
+  .notification {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .product-row {
+    z-index: 10000;
+    position: relative;
+  }
+  
+  .cart-product-name,
+  .cart-product-quantity,
+  .cart-product-price,
+  .cart-product-subtotal {
+    color: black;
+    flex: 1;
+  }
+  
+  .receipt {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    z-index: 100000;
+    color: black;
+    align-items: center;
+    justify-content: center;
+  }
+  .receipt-taxes,
+  .receipt-total {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 100%;
+  
+    position: relative;
+    z-index: 100000;
+    color: black;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .receipt-subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    flex: 1;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .subtotal,
+  .total-price {
+    margin-right: 30px;
+  }
