@@ -251,9 +251,9 @@ The following specifications were met on the Express backend and the React front
   - [ ] Have a `server.js` file that starts the app by listening on port `3001`.
 
 **Models** - The API should use a `Store` model that handles the following
-  - [ ] List all products currently in the `db.json` file
-  - [ ] Fetch a single product by its id
-  - [ ] Create a purchase order
+  - [x] List all products currently in the `db.json` file
+  - [x] Fetch a single product by its id
+  - [x] Create a purchase order
 
 **Routes** - The API should contain a route mounted at the `/store` endpoint
   - [x] It should respond to `GET` requests to `/store` with an array of all products in the store in this format: `{ "products": products }`
