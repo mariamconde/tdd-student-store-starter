@@ -20,14 +20,13 @@ export default function ProductDetail({
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:3001/store/${productId}`)
+      .get(`https://codepath-store-api.herokuapp.com/store/${productId}`)
       .then((response) => {
         setProduct(response.data.product);
         setIsFetching(false);
       })
       .catch((e) => {
-        console.log("get product by id error", e);
-        // <NotFound />;
+        <NotFound />;
       });
   }, []);
 

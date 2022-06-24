@@ -49,22 +49,22 @@ export default function ProductGrid({
                   setCurrentTab("");
                 }}
               ></input>
-              <i className="material-icons">search</i>
+              <i class="material-icons">search</i>
             </div>
             <div className="row-links">
               <span className="help">
-                <i className="material-icons">help</i>
+                <i class="material-icons">help</i>
                 Help
               </span>
-              <div className="cart">
+              <div class="cart">
                 <a className="cart-a" href="/">
-                  My Cart<i className="material-icons">shopping_cart</i>
+                  My Cart<i class="material-icons">shopping_cart</i>
                 </a>
               </div>
             </div>
           </div>
           <div className="sn-row">
-            <i className="material-icons">menu</i>
+            <i class="material-icons">menu</i>
             <div className="sn-headings">
               <button
                 className="sn-h"
