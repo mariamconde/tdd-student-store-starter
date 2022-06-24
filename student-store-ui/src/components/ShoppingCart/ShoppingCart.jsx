@@ -33,9 +33,9 @@ export default function ShoppingCart(props) {
                         </tr>
                         {
                             props.shoppingCart.map((item) => {
-                                console.log("Item Product #: ", item.product)
+                                console.log("Item Product #: ", item.itemId)
                                 console.log("Quantity: ", item.quantity)
-                                let product = props.products.products[item.product - 1]
+                                let product = props.products[item.itemId - 1]
                                 console.log("Actual Product: ", product)
                                 let itemTotal = (product.price * item.quantity).toFixed(2)
                                 console.log("Item Total Price: ", itemTotal)
@@ -43,7 +43,9 @@ export default function ShoppingCart(props) {
                                 subtotal = subtotal.toFixed(2)
                                 console.log("Subtotal: ", subtotal)
                                 return (
-                                    <tr>
+
+                                    <tr key={item.itemId}>
+
                                         <td className="cart-product-name">{product.name}</td>
                                         <td className="cart-product-quantity">{item.quantity}</td>
                                         <td>{product.price}</td>

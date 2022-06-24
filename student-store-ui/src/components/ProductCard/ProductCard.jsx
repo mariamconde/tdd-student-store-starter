@@ -91,7 +91,6 @@ export default function ProductCard({
               width="20px"
               height="20px"
               viewBox="0 0 32 32"
-              class
               fill="none"
             >
               <path
