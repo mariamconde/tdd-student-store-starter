@@ -6,7 +6,8 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 // Include your gif here
 
-in progress will add updated gif before deadline
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/72282608/175406114-22e6026e-0974-41c6-97fc-7ae30f692c7b.gif)
+
 
 
 ### Application Features
@@ -21,8 +22,8 @@ in progress will add updated gif before deadline
 - [x] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
-- [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [x] User can check out, and can view receipt upon completion.
+- [ ] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
+- [ ] User can check out, and can view receipt upon completion.
 
 #### Stretch Features
 
@@ -221,28 +222,28 @@ The following specifications were met on the Express backend and the React front
     - `checkoutForm` - the form state for the `CheckoutForm` component
     - `handleOnCheckoutFormChange` - handler function to update the `checkoutForm`
     - `handleOnSubmitCheckoutForm` - handler function to submit the user's order to the API
-  - [ ] Should render two `input` elements, each with the `className` of `checkout-form-input`
-    - [ ] The `checkoutForm` prop should supply the correct props needed to create the two controlled inputs:
-      - [ ] The first input should have:
-        - [ ] the `type` prop set to `email`
-        - [ ] the `name` prop set to `email`
-        - [ ] the `placeholder` prop set to `student@codepath.org`
-        - [ ] the `value` prop set by `checkoutForm.email`.
-        - [ ] a valid `onChange` prop that uses the `handleOnCheckoutFormChange` function to update the `checkoutForm` state
-      - [ ] The second input should have:
-        - [ ] the `type` prop set to `text`
-        - [ ] the `name` prop set to `name`
-        - [ ] the `placeholder` prop set to `Student Name`
-        - [ ] the `value` prop set by `checkoutForm.name`.
-        - [ ] a valid `onChange` prop that uses the `handleOnCheckoutFormChange` function to update the `checkoutForm` state
+  - [x] Should render two `input` elements, each with the `className` of `checkout-form-input`
+    - [x] The `checkoutForm` prop should supply the correct props needed to create the two controlled inputs:
+      - [x] The first input should have:
+        - [x] the `type` prop set to `email`
+        - [x] the `name` prop set to `email`
+        - [x] the `placeholder` prop set to `student@codepath.org`
+        - [x] the `value` prop set by `checkoutForm.email`.
+        - [x] a valid `onChange` prop that uses the `handleOnCheckoutFormChange` function to update the `checkoutForm` state
+      - [x] The second input should have:
+        - [x] the `type` prop set to `text`
+        - [x] the `name` prop set to `name`
+        - [x] the `placeholder` prop set to `Student Name`
+        - [x] the `value` prop set by `checkoutForm.name`.
+        - [x] a valid `onChange` prop that uses the `handleOnCheckoutFormChange` function to update the `checkoutForm` state
   - [x] Should render a `button` element with the `className` of `checkout-button`.
-    - [ ] It should contain the text `Checkout`.
-    - [ ] When clicked, it should call the `handleOnSubmit` function.
-      - [ ] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
-      - [ ] If the `POST` request is successful...
-        - [ ] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
-        - [ ] The `shoppingCart` should be emptied
-        - [ ] The `checkoutForm` should be reset to its default state.
+    - [x] It should contain the text `Checkout`.
+    - [x] When clicked, it should call the `handleOnSubmit` function.
+      - [x] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
+      - [x] If the `POST` request is successful...
+        - [x] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
+        - [x] The `shoppingCart` should be emptied
+        - [x] The `checkoutForm` should be reset to its default state.
 
 **Server** - Create an Express server
   - [ ] Wire up the appropriate middleware and error handlers in the `app.js` file
